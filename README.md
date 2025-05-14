@@ -92,70 +92,69 @@ mvnw.cmd spring-boot:run
 ## 📂 Estructura del Proyecto
 ```
 calculator/
-├── .idea/ # Configuración de IntelliJ IDEA
+├── postman/
+│   └── Calculadora API.postman_collection.json    # Coleccion de Postman
 ├── db/
-│ └── init.sql # Script de inicialización de base de datos
+│   └── init.sql                       # Script de inicialización de base de datos
 ├── src/
-│ ├── main/
-│ │ ├── java/com.mmdl.calculator/
-│ │ │ ├── config/
-│ │ │ │ └── SwaggerConfig.java # Configuración de Swagger/OpenAPI
-│ │ │ ├── controller/
-│ │ │ │ ├── AuthController.java # Endpoints de autenticación
-│ │ │ │ ├── CalculatorController.java # Endpoints de operaciones
-│ │ │ │ └── HistoryController.java # Endpoints de historial
-│ │ │ ├── dto/
-│ │ │ │ ├── AuthRequest.java # DTO para login
-│ │ │ │ ├── AuthResponse.java # DTO para respuesta JWT
-│ │ │ │ ├── CalculationRequest.java # DTO para solicitud de cálculo
-│ │ │ │ ├── CalculationResponse.java # DTO para resultado
-│ │ │ │ ├── OperationFilterDTO.java # DTO para filtrar operaciones
-│ │ │ │ ├── RegisterRequest.java # DTO para registro
-│ │ │ │ └── UserDto.java # DTO para usuario
-│ │ │ ├── exception/
-│ │ │ │ ├── ApiExceptionHandler.java # Manejador global de excepciones
-│ │ │ │ ├── EmailValidationException.java
-│ │ │ │ ├── ResourceNotFoundException.java
-│ │ │ │ └── UserAlreadyExistsException.java
-│ │ │ ├── model/
-│ │ │ │ ├── Operation.java # Entidad de operación
-│ │ │ │ └── User.java # Entidad de usuario
-│ │ │ ├── repository/
-│ │ │ │ ├── OperationRepository.java # Repositorio de operaciones
-│ │ │ │ └── UserRepository.java # Repositorio de usuarios
-│ │ │ ├── security/
-│ │ │ │ ├── JwtAuthenticationFilter.java # Filtro JWT
-│ │ │ │ ├── JwtService.java # Servicio JWT
-│ │ │ │ ├── SecurityConfig.java # Configuración de seguridad
-│ │ │ │ └── UserDetailsServiceImpl.java # UserDetailsService
-│ │ │ ├── service/
-│ │ │ │ ├── AuthService.java # Servicio de autenticación
-│ │ │ │ ├── CalculatorService.java # Lógica de calculos
-│ │ │ │ ├── EmailValidationService.java # Validación de email
-│ │ │ │ └── OperationService.java # Servicio de operaciones
-│ │ │ ├── util/
-│ │ │ │ ├── DateUtil.java # Utilidades de fecha
-│ │ │ │ └── CalculatorApplication.java # Clase main
-│ │ ├── resources/
-│ │ │ └── application.properties # Configuración de aplicación
-│ ├── test/
-│ │ ├── java/com.mmdl.calculator/
-│ │ │ ├── controller/
-│ │ │ │ └── HistoryControllerTest.java
-│ │ │ ├── service/
-│ │ │ │ ├── AuthServiceTest.java
-│ │ │ │ ├── CalculatorServiceTest.java
-│ │ │ │ └── OperationServiceTest.java
-│ │ │ └── CalculatorApplicationTests.java
-├── target/ # Directorio de compilación
+│   ├── main/
+│   │   ├── java/com/mmdl/calculator/
+│   │   │   ├── config/
+│   │   │   │   └── SwaggerConfig.java
+│   │   │   ├── controller/
+│   │   │   │   ├── AuthController.java
+│   │   │   │   ├── CalculatorController.java
+│   │   │   │   └── HistoryController.java
+│   │   │   ├── dto/
+│   │   │   │   ├── AuthRequest.java
+│   │   │   │   ├── AuthResponse.java
+│   │   │   │   ├── CalculationRequest.java
+│   │   │   │   ├── CalculationResponse.java
+│   │   │   │   ├── OperationFilterDTO.java
+│   │   │   │   ├── RegisterRequest.java
+│   │   │   │   └── UserDto.java
+│   │   │   ├── exception/
+│   │   │   │   ├── ApiExceptionHandler.java
+│   │   │   │   ├── EmailValidationException.java
+│   │   │   │   ├── ResourceNotFoundException.java
+│   │   │   │   └── UserAlreadyExistsException.java
+│   │   │   ├── model/
+│   │   │   │   ├── Operation.java
+│   │   │   │   └── User.java
+│   │   │   ├── repository/
+│   │   │   │   ├── OperationRepository.java
+│   │   │   │   └── UserRepository.java
+│   │   │   ├── security/
+│   │   │   │   ├── JwtAuthenticationFilter.java
+│   │   │   │   ├── JwtService.java
+│   │   │   │   ├── SecurityConfig.java
+│   │   │   │   └── UserDetailsServiceImpl.java
+│   │   │   ├── service/
+│   │   │   │   ├── AuthService.java
+│   │   │   │   ├── CalculatorService.java
+│   │   │   │   ├── EmailValidationService.java
+│   │   │   │   └── OperationService.java
+│   │   │   ├── util/
+│   │   │   │   ├── DateUtil.java
+│   │   │   │   └── CalculatorApplication.java
+│   ├── resources/
+│   │   └── application.properties
+├── test/
+│   ├── java/com/mmdl/calculator/
+│   │   ├── controller/
+│   │   │   └── HistoryControllerTest.java
+│   │   ├── service/
+│   │   │   ├── AuthServiceTest.java
+│   │   │   ├── CalculatorServiceTest.java
+│   │   │   └── OperationServiceTest.java
+│   │   └── CalculatorApplicationTests.java
 ├── .gitattributes
 ├── .gitignore
-├── HELP.md
 ├── LICENSE
-├── mvnw # Maven Wrapper (Unix)
-├── mvnw.cmd # Maven Wrapper (Windows)
-├── pom.xml # Configuración de Maven
-└── README.md # Este archivo
+├── mvnw                              # Maven Wrapper (Unix)
+├── mvnw.cmd                          # Maven Wrapper (Windows)
+├── pom.xml                           # Configuración de Maven
+└── README.md                         # Este archivo
 ```
 
 ## 🔐 Seguridad
