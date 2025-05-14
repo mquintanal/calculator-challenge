@@ -26,35 +26,44 @@ API REST construida con **Spring Boot 3.4.5** y **Java 21** que permite:
 
 ---
 
+
 ## ⚙️ Instalación y Configuración
 
-### 📄 application.properties
+>## Requerimientos ##
 
-```properties
-spring.datasource.url=jdbc:mysql://localhost:3306/calculadora?useSSL=false&serverTimezone=UTC
-spring.datasource.username=calculadora_user
-spring.datasource.password=calculadora_password
-spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+|       | Recomendado |
+|-------|-------------|
+| java  | 21          |
+| Maven | 3.8.6       |
+| MySQL | 8.0.42      |
 
-spring.jpa.hibernate.ddl-auto=update
-spring.jpa.show-sql=true
-spring.jpa.database-platform=org.hibernate.dialect.MySQL8Dialect
 
-security.jwt.secret=VvZtB7z9AaDk3TyWqL8MsR4XePnUq3Lr
+## 📄  Quicksetup ##
 
-external.api.abstract.url=https://emailvalidation.abstractapi.com/v1/
-external.api.abstract.key=c8eb37b717954aeca13f769a16a14fd8
+Primero clona el proyecto desde este mismo repositorio. Luego sigue los siguientes pasos:
 
-server.port=8080
+1. Instala las dependencias del proyecto corriendo el siguiente comando en la raíz del proyecto.
+
 ```
+#Para sistmas Windows:
+mvn clean install
 
-📌 El token JWT tiene una duración de **5 minutos** (300,000 ms).
+#Para sistemas Unix:
+./mvn clean install
 
+#Wrapped para sistemas Unix
+./mvnw clean install
+
+#Wrapped para sistemas Windows:
+mvnw.cmd clean install
+```
 ---
 
 ## 🗃️ Base de Datos
 
-Ejecuta el script SQL `db/init.sql` para crear la base de datos, el usuario y las tablas necesarias:
+2-Corre tu servidor MySql.
+
+3- Ejecuta el script SQL `db/init.sql` para crear la base de datos, el usuario y las tablas necesarias:
 
 ```bash
 mysql -u root -p < db/init.sql
@@ -64,12 +73,95 @@ mysql -u root -p < db/init.sql
 
 ---
 
+4- Inicia la aplicación. [Conoce más](https://docs.spring.io/spring-boot/docs/current/reference/html/getting-started.html)
+
+```
+#Para sistemas Windows:
+mvn spring-boot:run 
+
+#Para sistemas Unix:
+./mvn spring-boot:run 
+
+##Wrapped para sistemas Unix
+./mvnw spring-boot:run 
+
+#Wrapped para sistemas Windows:
+mvnw.cmd spring-boot:run 
+```
+
+## 📂 Estructura del Proyecto
+calculator/
+├── .idea/ # Configuración de IntelliJ IDEA
+├── db/
+│ └── init.sql # Script de inicialización de base de datos
+├── src/
+│ ├── main/
+│ │ ├── java/com.mmdl.calculator/
+│ │ │ ├── config/
+│ │ │ │ └── SwaggerConfig.java # Configuración de Swagger/OpenAPI
+│ │ │ ├── controller/
+│ │ │ │ ├── AuthController.java # Endpoints de autenticación
+│ │ │ │ ├── CalculatorController.java # Endpoints de operaciones
+│ │ │ │ └── HistoryController.java # Endpoints de historial
+│ │ │ ├── dto/
+│ │ │ │ ├── AuthRequest.java # DTO para login
+│ │ │ │ ├── AuthResponse.java # DTO para respuesta JWT
+│ │ │ │ ├── CalculationRequest.java # DTO para solicitud de cálculo
+│ │ │ │ ├── CalculationResponse.java # DTO para resultado
+│ │ │ │ ├── OperationFilterDTO.java # DTO para filtrar operaciones
+│ │ │ │ ├── RegisterRequest.java # DTO para registro
+│ │ │ │ └── UserDto.java # DTO para usuario
+│ │ │ ├── exception/
+│ │ │ │ ├── ApiExceptionHandler.java # Manejador global de excepciones
+│ │ │ │ ├── EmailValidationException.java
+│ │ │ │ ├── ResourceNotFoundException.java
+│ │ │ │ └── UserAlreadyExistsException.java
+│ │ │ ├── model/
+│ │ │ │ ├── Operation.java # Entidad de operación
+│ │ │ │ └── User.java # Entidad de usuario
+│ │ │ ├── repository/
+│ │ │ │ ├── OperationRepository.java # Repositorio de operaciones
+│ │ │ │ └── UserRepository.java # Repositorio de usuarios
+│ │ │ ├── security/
+│ │ │ │ ├── JwtAuthenticationFilter.java # Filtro JWT
+│ │ │ │ ├── JwtService.java # Servicio JWT
+│ │ │ │ ├── SecurityConfig.java # Configuración de seguridad
+│ │ │ │ └── UserDetailsServiceImpl.java # UserDetailsService
+│ │ │ ├── service/
+│ │ │ │ ├── AuthService.java # Servicio de autenticación
+│ │ │ │ ├── CalculatorService.java # Lógica de calculos
+│ │ │ │ ├── EmailValidationService.java # Validación de email
+│ │ │ │ └── OperationService.java # Servicio de operaciones
+│ │ │ ├── util/
+│ │ │ │ ├── DateUtil.java # Utilidades de fecha
+│ │ │ │ └── CalculatorApplication.java # Clase main
+│ │ ├── resources/
+│ │ │ └── application.properties # Configuración de aplicación
+│ ├── test/
+│ │ ├── java/com.mmdl.calculator/
+│ │ │ ├── controller/
+│ │ │ │ └── HistoryControllerTest.java
+│ │ │ ├── service/
+│ │ │ │ ├── AuthServiceTest.java
+│ │ │ │ ├── CalculatorServiceTest.java
+│ │ │ │ └── OperationServiceTest.java
+│ │ │ └── CalculatorApplicationTests.java
+├── target/ # Directorio de compilación
+├── .gitattributes
+├── .gitignore
+├── HELP.md
+├── LICENSE
+├── mvnw # Maven Wrapper (Unix)
+├── mvnw.cmd # Maven Wrapper (Windows)
+├── pom.xml # Configuración de Maven
+└── README.md # Este archivo
+
 ## 🔐 Seguridad
 
 - Autenticación con JWT (Bearer Token).
 - Encriptación de contraseñas con BCrypt.
 - Validación de correos usando [Abstract API](https://www.abstractapi.com/email-verification).
-
+- El token JWT tiene una duración de **5 minutos** (300,000 ms).
 ---
 
 ## 📄 Endpoints Principales
