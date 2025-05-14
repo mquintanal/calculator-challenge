@@ -134,9 +134,6 @@ calculator/
 │   │   │   │   ├── CalculatorService.java
 │   │   │   │   ├── EmailValidationService.java
 │   │   │   │   └── OperationService.java
-│   │   │   ├── util/
-│   │   │   │   ├── DateUtil.java
-│   │   │   │   └── CalculatorApplication.java
 │   ├── resources/
 │   │   └── application.properties
 ├── test/
