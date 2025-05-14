@@ -1,10 +1,10 @@
-package com.mmql.calculadora;
+package com.mmql.calculator;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class CalculadoraApplicationTests {
+class CalculatorApplicationTests {
 
 	@Test
 	void contextLoads() {
