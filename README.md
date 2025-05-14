@@ -90,6 +90,7 @@ mvnw.cmd spring-boot:run
 ```
 
 ## 📂 Estructura del Proyecto
+```
 calculator/
 ├── .idea/ # Configuración de IntelliJ IDEA
 ├── db/
@@ -155,6 +156,7 @@ calculator/
 ├── mvnw.cmd # Maven Wrapper (Windows)
 ├── pom.xml # Configuración de Maven
 └── README.md # Este archivo
+```
 
 ## 🔐 Seguridad
 
