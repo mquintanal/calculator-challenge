@@ -13,7 +13,7 @@ public class SwaggerConfig {
     public OpenAPI openAPI() {
         Contact contact = new Contact();
         contact.email("quintana.m.martha@gmail.com");
-        contact.setName("María Martha Quintana López");
+        contact.setName("Martha Quintana");
 
         return new OpenAPI()
                 .info(new Info().title("Calculadora API")

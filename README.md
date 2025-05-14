@@ -297,7 +297,7 @@ http://localhost:8080/v3/api-docs
 
 ## ✨ Autor y Licencia
 
-MIT License - Desarrollado por María Martha Quintana
+MIT License - Desarrollado por Martha Quintana
 
 ---
 
