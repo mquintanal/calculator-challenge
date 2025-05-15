@@ -49,6 +49,22 @@ Primero clona el proyecto desde este mismo repositorio. Luego sigue los siguient
 
 2- Ejecuta el script SQL `db/init.sql` para crear la base de datos, el usuario y las tablas necesarias:
 
+2.1 - Si prefieres que Hibernate haga las tablas por ti, solo ejecuta:
+
+```
+-- Crear base de datos si no existe
+CREATE DATABASE IF NOT EXISTS calculadora
+CHARACTER SET utf8mb4
+COLLATE utf8mb4_unicode_ci;
+
+-- Usar base de datos
+USE calculadora;
+
+-- Crear usuario con autenticación compatible JDBC (MySQL 8)
+CREATE USER IF NOT EXISTS 'calculadora_user'@'localhost' IDENTIFIED BY 'calculadora_password';
+ALTER USER 'calculadora_user'@'localhost' IDENTIFIED WITH mysql_native_password BY 'calculadora_password';
+```
+
 ```bash
 mysql -u root -p < db/init.sql
 ```
