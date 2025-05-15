@@ -42,7 +42,21 @@ API REST construida con **Spring Boot 3.4.5** y **Java 21** que permite:
 
 Primero clona el proyecto desde este mismo repositorio. Luego sigue los siguientes pasos:
 
-1. Instala las dependencias del proyecto corriendo el siguiente comando en la raíz del proyecto.
+
+## 🗃️ Base de Datos
+
+1-Corre tu servidor MySql.
+
+2- Ejecuta el script SQL `db/init.sql` para crear la base de datos, el usuario y las tablas necesarias:
+
+```bash
+mysql -u root -p < db/init.sql
+```
+> El script crea un usuario `calculadora_user` y define autenticación compatible con JDBC.
+
+---
+## 🗜️ Dependencias Maven
+3-Instala las dependencias del proyecto corriendo el siguiente comando en la raíz del proyecto.
 
 ```
 #Para sistmas Windows:
@@ -59,19 +73,7 @@ mvnw.cmd clean install
 ```
 ---
 
-## 🗃️ Base de Datos
 
-2-Corre tu servidor MySql.
-
-3- Ejecuta el script SQL `db/init.sql` para crear la base de datos, el usuario y las tablas necesarias:
-
-```bash
-mysql -u root -p < db/init.sql
-```
-
-> El script crea un usuario `calculadora_user` y define autenticación compatible con JDBC.
-
----
 
 4- Inicia la aplicación. [Conoce más](https://docs.spring.io/spring-boot/docs/current/reference/html/getting-started.html)
 
